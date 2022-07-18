@@ -65,10 +65,7 @@ class _RenderXliveSwitch extends RenderConstrainedBox {
     ValueChanged<bool>? onChanged,
     required TextDirection textDirection,
     required TickerProvider vsync,
-  }) : assert(value != null),
-        assert(activeColor != null),
-        assert(vsync != null),
-        _value = value,
+  }) : _value = value,
         _activeColor = activeColor,
         _unActiveColor = unActiveColor,
         _onChanged = onChanged,
@@ -129,24 +126,23 @@ class _RenderXliveSwitch extends RenderConstrainedBox {
   bool _value;
 
   set value(bool value) {
-    assert(value != null);
     if (value == _value) return;
     _value = value;
     markNeedsSemanticsUpdate();
     _position!
       ..curve = Curves.bounceOut
       ..reverseCurve = Curves.bounceOut.flipped;
-    if (value)
+    if (value) {
       _positionController.forward();
-    else
+    } else {
       _positionController.reverse();
+    }
   }
 
   TickerProvider get vsync => _vsync;
   TickerProvider _vsync;
 
   set vsync(TickerProvider value) {
-    assert(value != null);
     if (value == _vsync) return;
     _vsync = value;
     _positionController.resync(vsync);
@@ -160,14 +156,12 @@ class _RenderXliveSwitch extends RenderConstrainedBox {
   Color? _unActiveColor;
 
   set activeColor(Color value) {
-    assert(value != null);
     if (value == _activeColor) return;
     _activeColor = value;
     markNeedsPaint();
   }
 
   set unActiveColor(Color value) {
-    assert(value != null);
     if (value == _unActiveColor) return;
     _unActiveColor = value;
     markNeedsPaint();
@@ -190,7 +184,6 @@ class _RenderXliveSwitch extends RenderConstrainedBox {
   TextDirection _textDirection;
 
   set textDirection(TextDirection value) {
-    assert(value != null);
     if (_textDirection == value) return;
     _textDirection = value;
     markNeedsPaint();
@@ -204,10 +197,11 @@ class _RenderXliveSwitch extends RenderConstrainedBox {
   @override
   void attach(PipelineOwner owner) {
     super.attach(owner);
-    if (value)
+    if (value) {
       _positionController.forward();
-    else
+    } else {
       _positionController.reverse();
+    }
     if (isInteractive) {
       switch (_reactionController.status) {
         case AnimationStatus.forward:
@@ -233,9 +227,11 @@ class _RenderXliveSwitch extends RenderConstrainedBox {
 
   void _handlePositionStateChanged(AnimationStatus status) {
     if (isInteractive) {
-      if (status == AnimationStatus.completed && !_value)
+      if (status == AnimationStatus.completed && !_value) {
         onChanged!(true);
-      else if (status == AnimationStatus.dismissed && _value) onChanged!(false);
+      } else if (status == AnimationStatus.dismissed && _value) {
+        onChanged!(false);
+      }
     }
   }
 
@@ -277,10 +273,11 @@ class _RenderXliveSwitch extends RenderConstrainedBox {
   }
 
   void _handleDragEnd(DragEndDetails details) {
-    if (_position!.value >= 0.5)
+    if (_position!.value >= 0.5) {
       _positionController.forward();
-    else
+    } else {
       _positionController.reverse();
+    }
     _reactionController.reverse();
   }
 
@@ -325,7 +322,7 @@ class _RenderXliveSwitch extends RenderConstrainedBox {
     }
 
     final trackColor = _color.value!;
-    final double borderThickness = 1.5 + (_kTrackRadius - 1.5) * 1.0;
+    const double borderThickness = 1.5 + (_kTrackRadius - 1.5) * 1.0;
 
     final Paint paint = Paint()..color = trackColor;
 

@@ -9,9 +9,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
-part '/animation_switch.dart';
+part 'animation_switch.dart';
 
-part '/thumb_painter.dart';
+part 'thumb_painter.dart';
 
 class SwitcherXlive extends StatefulWidget {
   //create a switcher with animation similar https://dribbble.com/shots/5429846-Switcher-XLIV
