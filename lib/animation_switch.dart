@@ -32,7 +32,8 @@ class _SwitcherXliveRenderObjectWidget extends LeafRenderObjectWidget {
   }
 
   @override
-  void updateRenderObject(BuildContext context, _RenderXliveSwitch renderObject) {
+  void updateRenderObject(
+      BuildContext context, _RenderXliveSwitch renderObject) {
     renderObject
       ..value = value!
       ..activeColor = activeColor!
@@ -65,7 +66,7 @@ class _RenderXliveSwitch extends RenderConstrainedBox {
     ValueChanged<bool>? onChanged,
     required TextDirection textDirection,
     required TickerProvider vsync,
-  }) : _value = value,
+  })  : _value = value,
         _activeColor = activeColor,
         _unActiveColor = unActiveColor,
         _onChanged = onChanged,
@@ -73,7 +74,9 @@ class _RenderXliveSwitch extends RenderConstrainedBox {
         _thumbColor = thumbColor,
         _thumbPainter = _SwitcherXliveThumbPainter(color: thumbColor),
         _vsync = vsync,
-        super(additionalConstraints: const BoxConstraints.tightFor(width: _kSwitchWidth, height: _kSwitchHeight)) {
+        super(
+            additionalConstraints: const BoxConstraints.tightFor(
+                width: _kSwitchWidth, height: _kSwitchHeight)) {
     _tap = TapGestureRecognizer()
       ..onTapDown = _handleTapDown
       ..onTap = _handleTap
@@ -364,7 +367,7 @@ class _RenderXliveSwitch extends RenderConstrainedBox {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder description) {
     super.debugFillProperties(description);
-      description.add(FlagProperty('value',
+    description.add(FlagProperty('value',
         value: value, ifTrue: 'checked', ifFalse: 'unchecked', showName: true));
     description.add(FlagProperty('isInteractive',
         value: isInteractive,
