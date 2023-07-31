@@ -11,7 +11,9 @@ Thanks Oleg Forlov for this beautiful design, phucgaoxam for the base code and a
 
 Design:
 
-Demo:
+Demo: 
+
+![](https://github.com/Rileyjrjohns/switcher_xlive/blob/main/switcher_xliv.gif?raw=true)
 
 Usage
 To use plugin, just import package import 'package:switcher_xlive/switcher_xlive.dart';
