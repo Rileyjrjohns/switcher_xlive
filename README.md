@@ -22,6 +22,7 @@ activeColor: background color when value is true
 unActiveColor: background color when value is false
 thumbColor: your thumb color
 Example
+```
 import 'package:flutter/material.dart';
 import 'package:switcher_xlive/switcher_xlive.dart';
 
@@ -33,39 +34,37 @@ class MyApp extends StatefulWidget {
 }
 
 class \_MyAppState extends State<MyApp> {
-bool \_value = true;
-
-@override
-void initState() {
-super.initState();
-}
+  bool \_value = true;
 
 @override
 Widget build(BuildContext context) {
-return MaterialApp(
-home: Scaffold(
-appBar: AppBar(
-title: const Text('Plugin example app'),
-),
-body: Center(
-child: Column(
-mainAxisAlignment: MainAxisAlignment.center,
-children: <Widget>[
-SwitcherXlive(
-value: _value,
-onChanged: _changeValue,
-),
-Text('Current value: $_value'),
-],
-),
-),
-),
-);
+  return MaterialApp(
+    home: Scaffold(
+      appBar: AppBar(
+        title: const Text('Plugin example app'),
+      ),
+      body: Center(
+        child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          SwitcherXlive(
+            value: _value,
+            onChanged: _changeValue,
+            activeColor: Colors.red,
+            unActiveColor: Colors.green,
+            thumbColor: Colors.purple,
+          ),
+          Text('Current value: $_value'),
+        ],),
+      ),
+    ),
+  );
 }
 
-void \_changeValue(bool value) {
-setState(() {
-\_value = value;
-});
+  void \_changeValue(bool value) {
+    setState(() {
+      \_value = value;
+    });
+  }
 }
-}
+```
